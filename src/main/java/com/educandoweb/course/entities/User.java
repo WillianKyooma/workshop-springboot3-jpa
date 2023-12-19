@@ -29,14 +29,13 @@ public User() {
 }
 
 
-public User(long id, String name, String email, String phone, String password) {
-	super();
-	this.id = id;
-	this.name = name;
-	this.email = email;
-	this.phone = phone;
-	this.password = password;
+public User(String name, String email, String phone, String password) {
+    this.name = name;
+    this.email = email;
+    this.phone = phone;
+    this.password = password;
 }
+
 
 
 public long getId() {
