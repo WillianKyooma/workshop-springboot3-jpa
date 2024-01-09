@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +28,7 @@ private String email;
 private String phone;
 private String password;
 
-
+@JsonIgnore
 @OneToMany(mappedBy = "Client")
 private List<Order>orders = new ArrayList<>();
 
@@ -51,9 +53,7 @@ public long getId() {
 }
 
 
-public void setId(long id) {
-	this.id = id;
-}
+
 
 
 public String getName() {

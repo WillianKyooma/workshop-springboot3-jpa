@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +22,8 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy, MM-dd'T'HH:mm:ss'Z'",timezone = "GMT")
 	private Instant moment;
 	
 	@ManyToOne
@@ -27,18 +31,26 @@ public class Order implements Serializable {
 	private User Client;
 	
 	
-	public Order() {
-		
-	}
-
-
-	public Order(long id, Instant moment, User client) {
+	public Order(long id ,Instant moment, User client, Instant parse, User u1) {
 		super();
 		this.id = id;
 		this.moment = moment;
 		Client = client;
 	}
+	
+	
+	// Default no-argument constructor
+    public Order() {
+    }
 
+
+	
+
+
+	
+
+
+	
 
 	public long getId() {
 		return id;
