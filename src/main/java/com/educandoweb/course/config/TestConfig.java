@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.User;
+import com.educandoweb.course.entities.enums.OrderStatus;
 import com.educandoweb.course.repositories.OrderRepository;
 import com.educandoweb.course.repositories.UserRepository;
 
@@ -31,9 +32,9 @@ public void run(String... args) throws Exception {
     
     
    
-    Order o1 = new Order(0L, Instant.parse("2019-06-20T19:53:07Z"), u1, null, u2);
-    Order o2 = new Order(0L, Instant.parse("2019-07-21T03:42:10Z"), u2, null, u2);
-    Order o3 = new Order(0L, Instant.parse("2019-07-22T15:21:22Z"), u1, null, u2);
+    Order o1 = new Order(0L, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID,u1);
+    Order o2 = new Order(0L, Instant.parse("2019-07-21T03:42:10Z"),OrderStatus.WAYTING_PAYMENT, u2);
+    Order o3 = new Order(0L, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAYTING_PAYMENT, u1);
     
 
 
