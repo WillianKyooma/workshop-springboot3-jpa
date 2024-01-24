@@ -1,13 +1,16 @@
 package com.educandoweb.course.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 
 @Entity
@@ -20,18 +23,25 @@ private static final long serialVersionUID = 1L;
 	private String name;
 	
 	
+	@Transient
+	private Set<Product> products = new HashSet<>();
+	
+	
 	public Category() {
 		
 	}
 
-
+    
 	public Category(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-
+	public Set<Product> getProducts() {
+		return products;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -69,6 +79,8 @@ private static final long serialVersionUID = 1L;
 		Category other = (Category) obj;
 		return Objects.equals(id, other.id);
 	}
+
+
 	
 	
 }
