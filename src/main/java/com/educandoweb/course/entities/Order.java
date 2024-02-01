@@ -56,13 +56,6 @@ public class Order implements Serializable {
     public Order() {
     }
 
-
-	
-
-
-	
-
-
 	
 
 	public long getId() {
@@ -125,13 +118,6 @@ public class Order implements Serializable {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-
-
-
-
-
-
-
 
 
 
