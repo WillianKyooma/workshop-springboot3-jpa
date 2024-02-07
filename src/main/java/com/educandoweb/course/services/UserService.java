@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import com.educandoweb.course.repositories.UserRepository;
 import com.educandoweb.course.resources.exceptions.DatabaseException;
 import com.educandoweb.course.services.exceptions.ResourceNotFoundException;
+
+import jakarta.persistence.EntityNotFoundException;
+
 import com.educandoweb.course.entities.User;
 
 
@@ -49,9 +52,14 @@ public void delete(Long id) {
 }
 
 public User update(Long id, User obj) {
+	try {
 	User entity = repository.getReferenceById(id);
 	updateData(entity, obj);
 	return repository.save(entity);
+	} catch (EntityNotFoundException e) {
+		
+		throw new ResourceNotFoundException(id);
+	}
 }
 
 
